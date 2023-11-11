@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="countor.css">
+    <title>ContourPlots</title>
+</head>
+<body>
+    <div class="header">
+           <p class="header-head">Countor Plots</p>
+    </div>
+
+    <div class="content-box">
+      <p class="content">
+        Contour plots are a graphical technique for representing a 3-D surface by plotting constant slices, called contours, in a 2-D format.If we consider X and Y as our variables we want to plot then the response Z will be plotted as slices on the X-Y plane due to which contours are sometimes referred as Z-slices or iso-response.
+      </br><br>
+    A contour plot is appropriate if you want to see how alue Z changes     as a function of two inputs X and Y, such that Z = f(X,Y). A contour    line or isoline of a function of two variables is a curve along which  the function has a constant value. The independent variables x and y     are usually restricted to a regular grid called meshgrid. The numpy.    meshgrid creates a rectangular grid out of an array of x values and an array of y values. Matplotlib API contains contour() and contourf() functions that draw contour lines and filled contours, respectively. Both functions need three parameters x,y and z.
+      </p>
+
+      <div class="uses">
+        <p class="uses-head">Uses of Contour Plots</p>
+        <p class="uses-def">
+            Contour plots are widely used in cartography, where contour lines on a topological map indicate the same elevations. Isolines (contour lines) represent a region's shape on a two-dimensional map. The contour lines are joined at equal elevation, which helps us visualize elevation on the ground. Contour plots can also be used to study the terrain's geography, which helps show the elevations.
+            <br><br>
+            Contour plots can be used to represent a variety of things, including:
+        </p>
+        <ul class="uses-li">
+            <li>Barometric pressure</li>  
+            <li>Temperature</li>
+            <li>Rainfall and air moisture</li>
+            <li>Wind</li>
+            <li>Freeze and thaw</li>
+            <li>Elevation and depth</li>
+            <li>Electrostatics</li>
+            <li>Fish biomass</li>
+        </ul>
+
+      </div>
+
+      <div class="types">
+        <p class="types-head">Types of Contour Plots</p>
+      <div class="type">
+        <h3 class="type-title">
+            Rectangular Contour plot:
+        </h3>
+        <p class="type-def">
+     A projection of 2D-plot in 2D-rectangular canvas. It is the most common form of the contour plot.
+        </p>
+        <div >
+            <pre class="code-box">
+                <code>
+# imports 
+<span class="highlight">import</span> numpy <span class="highlight">as</span> np 
+<span class="highlight">import</span> matplotlib.pyplot <span class="highlight">as</span> plt 
+# 
+# define a function 
+def <span class="func">func</span>(x, y): 
+return np.<span class="func">sin</span>(x) ** 2 + np.<span class="func">cos</span>(y) **2 
+
+# generate 50 values b/w 0 a5 
+
+x = np.<span class="func">linspace</span>(0, 5, 50) 
+y = np.<span class="func">linspace</span>(0, 5, 50) 
+
+# Generate combination of grids 
+X, Y = np.<span class="func">meshgrid</span>(x, y) 
+Z = <span class="func">func</span>(X, Y) 
+                    
+# Draw rectangular contour plot 
+plt.<span class="func">contour</span>(X, Y, Z, <span class="ahigh">cmap</span>=<span class="str">'gist_rainbow_r'</span>); 
+                    </code>
+            </pre>               
+        </div>
+        <strong class="output" style="padding:0 10px;">Output</strong>
+        <div class="">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20201228074038/rectangularcontour.PNG" alt="RectanglePlot" class="output-img">
+        </div>   
+      </div>
+
+      <div class="type">
+        <h2 class="type-title">
+            Polar contour plot
+        </h2>
+        <p class="type-def">
+            Polar contour plot is plotted by using the polar coordinates r and theta. The response variable here is the collection of values generated while passing r and theta into the given function, where r is the distance from origin and theta is the angle from the positive x axis.
+        </p>
+        <div class="type-eg">
+            <pre class="code-box">
+                <code>
+<span style="color: rgb(93, 91, 91);"># generate r and theta arrays</span>
+rad_arr = np. <span class="func">radians</span>(np.linspace(0, 360, 20)) 
+r_arr = np.<span class="func">arange</span>(0, 1, .1) 
+
+<span style="color: rgb(93, 91, 91);"># define function</span>
+def <span class="func">func</span>(r, theta): 
+<span class="highlight">return</span> r * np.<span class="func">sin</span>(theta) 
+
+r, theta = np.<span class="func">meshgrid</span>(r_arr, rad_arr) 
+
+<span style="color: rgb(93, 91, 91);"># get the values of response variables </span>
+values = <span class="func">func</span>(r,theta) 
+
+<span style="color: rgb(93, 91, 91);"># plot the polar coordinates</span>
+fig, ax = plt.<span class="func">subplots</span>(<span class="ahigh">subplot_kw</span>=<span class="func">dict</span>(<span class="ahigh">projection</span>=<span class="str">'polar'</span>)) 
+ax.<span class="func">contourf</span>(theta, r, values, <span class="ahigh">cmap</span>=<span class="str">'Spectral_r'</span>) 
+
+plt.<span class="func">show</span>()
+
+</code>
+            </pre>                
+            <strong class="type-output" style="padding:10px 15px;">Output</strong>               
+            <div class="output">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20201228074037/polarcontour.PNG" alt="PolarPlot" class="output-img">
+            </div>  
+        </div>
+    </div>
+
+    <div class="type">
+        <h2 class="type-title">
+            Ternary contour plot
+        </h2>
+        <p class="type-def">
+            Ternary contour plot is used to represent the relationship between 3 explanatory variables and the response variable in the form of a filled triangle. <br>
+            Matplotlib does not provide a definitive API for plotting Ternary Contour plot, however, there are many other package which does that. IN this example, we will be using Plotly library.
+
+        </p>
+        <div class="type-eg">
+            <pre class="code-box">
+                <code>
+# install & import plotly 
+! pip install plotly 
+<span class="highlight">import</span> plotly.figure_factory <span class="highlight">as</span> ff 
+
+# Define variables 
+a = np.<span class="func">arange</span>([0. , 0. , 0., 0., 1./3, 1./3, 1./3, 2./3, 2./3, 1.]) 
+b = np.<span class="func">arange</span>([0., 1./3, 2./3, 1., 0., 1./3, 2./3, 0., 1./3, 0.]) 
+c = 1 - a - b 
+# Define function that generates response variable 
+func = (a - 0.02) * b * (a - 0.5) * (b - 0.4) * (c - 1)**2
+
+# plot ternary contour 
+fig = ff.<span class="func">create_ternary_contour</span>(np.<span class="func">arange</span>([a, b, c]), func
+,<span class="ahigh">pole_labels</span>=['a', 'b', 'c'],
+<span class="ahigh">interp_mode</span>='cartesian',<span class="ahigh">colorscale</span>='Viridis',) 
+
+fig.<span class="func">show</span>() 
+                                            
+                </code>
+            </pre>    
+            <strong class="cp-output" style="padding:10px 25px;">Output</strong>         
+        <div class="output">
+
+            <div class="output">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20201228074035/ternarycontour.PNG" alt="TernaryPlot" class="output-img">
+            </div>            
+        </div>
+    </div>
+</div>
+</div>
+<div class="footer">
+    <p class="name">
+    By
+   <strong>@AbdulRahim</strong>
+   <small>B-Tech Ai&Ds  2<sup>nd</sup> year</small>
+</p> | Submitted to <strong>Prof.Karthick</strong> <small>HOD Ai&Ds</small>
+  </div>
+    </div>
+  
+    
+      </div>
+
+     
+    </div>
+
+
+</body>
+</html>

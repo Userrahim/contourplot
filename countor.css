@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap');
+
+
+:root{
+    --white:#fefae0 ;
+    --light-green:#606c38;
+    --dark-green:#283618;
+    --light-orange:#dda15e;
+    --dark-orange:#bc6c25;
+    --poppins:'Poppins', sans-serif;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--poppins);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    padding:10px;
+    width: 100%;
+    height:200px;
+    background-image: linear-gradient(rgba(0,0,0,.90),rgba(0,0,0,.95)),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW8G8KsFUnadXgAjwcKVq9Par4Hy2agRTPoI5vVxM7NcM6rlldOc70cK7I6VwQ7Kn_3A&usqp=CAU');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* display: flex;
+    /* justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    text-align: center;
+    position: relative;
+    padding-top:2rem;
+}
+.header-head{
+    color: var(--white);
+    letter-spacing: 2px;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.content-box{
+
+    position: absolute;
+    top: 20%;
+    background-color:white;
+    width: 80%;
+    border-radius:10px;
+    padding: 20px;
+    color:#283618 ;
+    box-shadow:5px 20px 20px #ece9e9;
+    font-weight:500;
+
+    }
+.uses{
+    padding:1rem 0;
+}
+.uses-head{
+    font-size: 25px;
+    padding:10px 0;
+    font-weight: 700;
+    color: #ec740a;
+    letter-spacing: 2px;
+}
+.uses-li{
+    padding: 10px 2rem;
+}
+
+
+.types{
+    padding:1rem 0;
+}
+.types-head{
+    font-size: 25px;
+    padding:10px 0;
+    font-weight: 700;
+    color: #ec740a;
+    letter-spacing: 2px;
+}
+.type{
+    padding: 2rem 0;
+}
+.code-box{
+    overflow:scroll;
+    background-color: #101010;
+    /* width:700px; */
+    color: #fdfdfd;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 17px;
+    font-weight: 500;
+    margin:10px;
+    border-radius:15px;
+}
+
+
+.highlight{
+    color: rgb(240, 13, 51);
+}
+.func{
+    color: rgb(83, 83, 236);
+}
+.str{
+    color: rgb(60, 218, 60);
+}
+.ahigh{
+    color: rgb(238, 97, 36);
+}
+
+.output-img{
+    width:300px;
+    height:300px;  
+    object-fit: contain;
+}
+
+
+.footer{
+    text-align: center;
+}
+
+@media only screen and (max-width:500px){
+    .header-head{
+        letter-spacing:2px;
+        font-size:40px;
+    }
+.content-box{
+    width: 95%;
+    padding: 15px;
+}
+.footer{
+    font-size:15px;
+}
+}
